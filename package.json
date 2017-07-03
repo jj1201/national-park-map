@@ -1,0 +1,36 @@
+{
+  "name": "national-park-map",
+  "version": "1.0.0",
+  "description": "It's an interactive map that shows information about all national parks in U.S.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^3.0.0"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp-clean-css": "^3.5.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jj1201/national-park-map.git"
+  },
+  "keywords": [
+    "interactive-map",
+    "knockoutJS"
+  ],
+  "author": "Jiajia Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jj1201/national-park-map/issues"
+  },
+  "homepage": "https://github.com/jj1201/national-park-map#readme"
+}
