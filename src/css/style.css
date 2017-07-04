@@ -77,7 +77,7 @@ hr {
 	width: 80%;
 }
 #filter {
-	width: 24%;
+	width: 70px;
 	font-size: 20px;
 }
 ul {
@@ -114,8 +114,16 @@ li a:hover {
 	/*left: 0 !important;*/
 	width: 100% !important;
 }
-@media only screen and (max-width: 480px) {
-    .menubar {
-        width: 0;
+@media only screen and (max-width: 600px) {
+    .menu-container {
+        width: 50% !important;
     }
+    #map {
+    	width: 50% !important;
+    }
+
+    .menubar {
+		width: 50% !important;
+    }
+
 }

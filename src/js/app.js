@@ -79,7 +79,7 @@ var nationalParks = [
 	},
 	{
 		name: 'Crater Lake',
-		location: {lat: -42.94, lng: -122.1},
+		location: {lat: 42.94, lng: -122.1},
 		state: 'Oregon',
 		description: 'Crater Lake lies in the caldera of an ancient volcano called Mount Mazama that collapsed 7,700 years ago. It is the deepest lake in the United States and is noted for its vivid blue color and water clarity. There are two more recent volcanic islands in the lake, and, with no inlets or outlets, all water comes through precipitation.'
 	},
@@ -151,7 +151,7 @@ var nationalParks = [
 	},
 	{
 		name: 'Great Sand Dunes',
-		location: {lat: -37.73, lng: -105.51},
+		location: {lat: 37.73, lng: -105.51},
 		state: 'Colorado',
 		description: 'The tallest sand dunes in North America, up to 750 feet (230 m) tall, were formed by deposits of the ancient Rio Grande in the San Luis Valley. Abutting a variety of grasslands, shrublands, and wetlands, the park also has alpine lakes, six 13,000-foot mountains, and old-growth forests.'
 	},
@@ -223,7 +223,7 @@ var nationalParks = [
 	},
 	{
 		name: 'Lake Clark',
-		location: {lat: -60.97, lng: -153.42},
+		location: {lat: 60.97, lng: -153.42},
 		state: 'Alaska',
 		description: 'The region around Lake Clark features four active volcanoes, including Mount Redoubt, as well as an abundance of rivers, glaciers, and waterfalls. Temperate rainforests, a tundra plateau, and three mountain ranges complete the landscape.'
 	},

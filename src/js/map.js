@@ -3,8 +3,9 @@ var map;
 var markers = [];
 var defaultIcon, highlightedIcon;
 var largeInfowindow;
+
 function initMap() {
-	//creates a new map - only center and zoom are required
+	//creates a new map 
 	var styledMapType = new google.maps.StyledMapType(
             [
               {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
@@ -238,6 +239,7 @@ function filter(infowindow) {
 // the marker that is clicked, and populate based on that markers position.
 function populateInfoWindow(marker, infowindow) {
 	//check to make sure the infowindow is not already opened on this marker.
+  //wikipedia AJAX request goes here
   zoomToArea(marker.position);
 	if(infowindow.marker != marker) {
     if(infowindow.marker != null) {
@@ -245,6 +247,11 @@ function populateInfoWindow(marker, infowindow) {
     }
 		infowindow.marker = marker;
     marker.setIcon(highlightedIcon);
+    $.ajax({
+      url: wikiUrl,
+      dataType: "jsonp",
+
+    });
     infowindow.setContent('<div style="font-size:22px">' + marker.title + '</div> <div style="width:200px"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div>')
 		infowindow.open(map, marker);
 		//Make sure the marker property is cleared if the infowindow is closed.
