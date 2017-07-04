@@ -382,3 +382,11 @@ var ViewModel = function() {
 	}
 }
 ko.applyBindings(new ViewModel());
+
+$('.menu-button').on('click', function(){
+    console.log("click button");
+   $(".menubar").toggle("slide", {direction: "left"}, 50);
+    $(".menu-container").toggleClass("fullscreen", 50);
+    $("#map").toggleClass("fullscreen", 50);
+    resizeMap();
+})

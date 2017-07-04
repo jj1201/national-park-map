@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>National Park List</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -16,6 +18,14 @@
 			<ul data-bind="foreach: nationalParkList" style="list-style:none">
 				<li> <a data-bind="text:name, click:$parent.showPark" href=""></a></li>
 			</ul>
+		</div>
+		<div class="menu-container">	
+			<div class="menu-button">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+
 		</div>
 		<div id="map"></div>
 	</div>
