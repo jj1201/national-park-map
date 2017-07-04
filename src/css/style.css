@@ -31,9 +31,9 @@ hr {
 #map {
 	bottom:0px;
 	height: calc(100% - 45px);
-	left: 25%;
 	position: absolute;
 	right: 0px;
+	width: 75%;
 }
 .menubar {
 	height: 100%;
@@ -51,9 +51,9 @@ hr {
 	width: 75%;
 	background: #D3E7C9;
 	height:45px;
-	left: 25%;
 	position: absolute;
 	top: 0px;
+	right: 0;
 }
 
 .filter-box {
@@ -111,8 +111,8 @@ li a:hover {
 }
 
 .fullscreen {
-	left: 0 !important;
-	width: 100%;
+	/*left: 0 !important;*/
+	width: 100% !important;
 }
 @media only screen and (max-width: 480px) {
     .menubar {

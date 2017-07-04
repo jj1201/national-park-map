@@ -125,10 +125,11 @@ function initMap() {
                     'styled_map']
           }
 	}); 
-  //listen for idle state of map to resize map
-   google.maps.event.addListener(map, "idle", function(){
-        google.maps.event.trigger(map, 'resize'); 
-    });
+  // //listen for idle state of map to resize map
+  //  google.maps.event.addListener(map, "idle", function(){
+  //       google.maps.event.trigger(map, 'resize'); 
+  //   });
+  google.maps.event.trigger(map, 'resize'); 
 	 //Associate the styled map with the MapTypeId and set it to display.
     map.mapTypes.set('styled_map', styledMapType);
     map.setMapTypeId('styled_map');
@@ -284,6 +285,6 @@ function resizeMap() {
   var center = map.getCenter();
   google.maps.event.trigger(map, "resize");
   map.setCenter(center);
-  setTimeout(resizeMap, 200);
+  setTimeout(resizeMap, 20);
   //open = true;
 }
