@@ -273,8 +273,8 @@ function populateInfoWindow(marker, infowindow) {
     //     nytContent +='<a href="'+article.web_url+'">' + article.headline.main + '</a>';
     //   }
     // });
-    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + ' National Park'+ '&format=json&callback=wikiCallback';
-    var url = ko.observable();
+    var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + ' National Park'+ '&format=json&callback=wikiCallback';
+    var url;
     $.ajax({
       async: false,
       cache: false,
@@ -283,10 +283,10 @@ function populateInfoWindow(marker, infowindow) {
       success: function(response){
         var url = response[3][0];
         console.log(url);
-         infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;overflow:hidden !important;"><a href="' + url + '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px;overflow:hidden !important;"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
+        infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;overflow:hidden !important;"><a href="' + url+ '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px;overflow:hidden !important;"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
       }
     });
-    console.log(url);
+   
     // infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;overflow:hidden !important;"><a href="' + url + '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px;overflow:hidden !important;"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
 		infowindow.open(map, marker);
 		//Make sure the marker property is cleared if the infowindow is closed.
