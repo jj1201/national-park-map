@@ -1,5 +1,6 @@
 # National Parks Map
-[See the website here](https://jj1201.github.io/national-park-map/dist)
+[See the website here](https://jj1201.github.io/national-park-map/dist).
+
 It's an interactive map of all national parks in the U.S. We can filter the parks by state or name and we can click on it to see more information.
 ### Installation
 1. Downlaod the repo.
