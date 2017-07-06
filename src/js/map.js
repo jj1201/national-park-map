@@ -252,22 +252,42 @@ function populateInfoWindow(marker, infowindow) {
     }
 		infowindow.marker = marker;
     marker.setIcon(highlightedIcon);
-    // $.ajax({
-    //   url: wikiUrl,
-    //   dataType: "jsonp",
-
+  //   var npsUrl = 'https://developer.nps.gov/api/v0/alerts?parkCode=yell,yose';
+  //   $.ajax({
+  //   url: npsUrl,
+  //   headers: {
+  //       'Authorization':"Basic BC4714CE-007D-4E1A-997F-9DBB6C6D4DD7",
+  //   },
+  //   method: 'POST',
+  //   dataType: 'json',
+  //   success: function(data){
+  //     console.log('succes: '+data);
+  //   }
+  // });
+    // var nytimeUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=2e155f2912fa4a80993452ef428640cf';
+    // var nytContent = "<div><h3>Latest NY Times Articles</h3></div>";
+    // $.getJSON(nytimeUrl, function(data){
+    //   var articles = data.response.docs;
+    //   for(var i = 0; i < Math.min(articles.length, 5); i++) {
+    //     var article = articles[i];
+    //     nytContent +='<a href="'+article.web_url+'">' + article.headline.main + '</a>';
+    //   }
     // });
-    var nytimeUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=2e155f2912fa4a80993452ef428640cf';
-    var nytContent = "<div><h3>Latest NY Times Articles</h3></div>";
-    $.getJSON(nytimeUrl, function(data){
-      var articles = data.response.docs;
-      for(var i = 0; i < Math.min(articles.length, 5); i++) {
-        var article = articles[i];
-        nytContent +='<a href="'+article.web_url+'">' + article.headline.main + '</a>';
+    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + ' National Park'+ '&format=json&callback=wikiCallback';
+    var url = ko.observable();
+    $.ajax({
+      async: false,
+      cache: false,
+      url: wikiUrl,
+      dataType: 'jsonp',
+      success: function(response){
+        var url = response[3][0];
+        console.log(url);
+         infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;overflow:hidden !important;"><a href="' + url + '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px;overflow:hidden !important;"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
       }
     });
-    var url = 'http://en.wikipedia.org/wiki/' + marker.title;
-    infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;"><a href="' + url + '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
+    console.log(url);
+    // infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;overflow:hidden !important;"><a href="' + url + '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px;overflow:hidden !important;"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
 		infowindow.open(map, marker);
 		//Make sure the marker property is cleared if the infowindow is closed.
 		infowindow.addListener('closeclick', function() {
@@ -299,7 +319,7 @@ function makeMarkerIcon(markerColor) {
 //show all listings, then decide to focus on one area of the map
 function zoomToArea(location) {
   map.setCenter(location);
-  map.setZoom(7);
+  map.setZoom(6);
     
 }
 
