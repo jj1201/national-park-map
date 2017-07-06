@@ -372,15 +372,23 @@ var ViewModel = function() {
 				self.nationalParkList.push(park);
 			}
 		});
-		//console.log("in filter function, has " + self.nationalParkList().length + " results");
-	}
+		console.log("in filter function, has " + self.nationalParkList().length + " results");
+	};
+
+	
 	self.showPark = function(clickedPark) {
 		console.log(clickedPark.name);
 		var idx = nationalParks.indexOf(clickedPark);
 		console.log(clickedPark.name + " is the " + idx + "th park of nationalParkList");
 		populateInfoWindow(markers[idx], largeInfowindow);
-	}
-}
+	};
+	$('body').keypress(function (e) {
+	  if (e.which == 13) {
+	    self.filter();
+	    //return false;    //<---- Add this line
+	  }
+	});
+};
 ko.applyBindings(new ViewModel());
 
 $('.menu-button').on('click', function(){
@@ -389,4 +397,4 @@ $('.menu-button').on('click', function(){
     $(".menu-container").toggleClass("fullscreen", 500);
     $("#map").toggleClass("fullscreen", 500);
     resizeMap();
-})
+});

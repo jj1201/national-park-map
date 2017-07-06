@@ -114,6 +114,11 @@ li a:hover {
 	/*left: 0 !important;*/
 	width: 100% !important;
 }
+
+.gm-style-iw {
+   /*overflow-y: scroll !important;*/
+  
+}
 @media only screen and (max-width: 600px) {
     .menu-container {
         width: 50% !important;

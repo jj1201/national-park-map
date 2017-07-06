@@ -194,9 +194,15 @@ function initMap() {
 		});
 
 	}
-  document.getElementById('filter').addEventListener('click', function() {
-          filter(largeInfowindow);
-        });
+  $('#filter').click(function() {
+    filter(largeInfowindow);
+  });
+  $('body').keypress(function (e) {
+    if (e.which == 13) {
+      filter(largeInfowindow);
+      //return false;    //<---- Add this line
+    }
+  });
 
 
 	
@@ -239,7 +245,6 @@ function filter(infowindow) {
 // the marker that is clicked, and populate based on that markers position.
 function populateInfoWindow(marker, infowindow) {
 	//check to make sure the infowindow is not already opened on this marker.
-  //wikipedia AJAX request goes here
   zoomToArea(marker.position);
 	if(infowindow.marker != marker) {
     if(infowindow.marker != null) {
@@ -247,12 +252,22 @@ function populateInfoWindow(marker, infowindow) {
     }
 		infowindow.marker = marker;
     marker.setIcon(highlightedIcon);
-    $.ajax({
-      url: wikiUrl,
-      dataType: "jsonp",
+    // $.ajax({
+    //   url: wikiUrl,
+    //   dataType: "jsonp",
 
+    // });
+    var nytimeUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + marker.title + '&sort=newest&api-key=2e155f2912fa4a80993452ef428640cf';
+    var nytContent = "<div><h3>Latest NY Times Articles</h3></div>";
+    $.getJSON(nytimeUrl, function(data){
+      var articles = data.response.docs;
+      for(var i = 0; i < Math.min(articles.length, 5); i++) {
+        var article = articles[i];
+        nytContent +='<a href="'+article.web_url+'">' + article.headline.main + '</a>';
+      }
     });
-    infowindow.setContent('<div style="font-size:22px">' + marker.title + '</div> <div style="width:200px"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div>')
+    var url = 'http://en.wikipedia.org/wiki/' + marker.title;
+    infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;"><a href="' + url + '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
 		infowindow.open(map, marker);
 		//Make sure the marker property is cleared if the infowindow is closed.
 		infowindow.addListener('closeclick', function() {
