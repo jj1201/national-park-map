@@ -283,7 +283,7 @@ function populateInfoWindow(marker, infowindow) {
       success: function(response){
         var url = response[3][0];
         console.log(url);
-        infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;overflow:hidden !important;"><a href="' + url+ '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px;overflow:hidden !important;"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
+        infowindow.setContent('<div style=" height: 300px !important;overflow: auto !important;"><div style="font-size:22px;overflow:hidden !important;"><a target="_blank" href="' + url+ '" style="color:black;text-decoration: none;">' + marker.title + '</a></div> <div style="width:200px;overflow:hidden !important;"><img src="images/' + marker.title +'.jpg" alt=""><hr><p>' + nationalParks[marker.id].description+'</p></div></div>');
       }
     });
    
