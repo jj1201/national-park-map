@@ -122,14 +122,14 @@ li a:hover {
 }
 @media only screen and (max-width: 600px) {
     .menu-container {
-        width: 50% !important;
+        width: 50% ;
     }
     #map {
-    	width: 50% !important;
+    	width: 50% ;
     }
 
     .menubar {
-		width: 50% !important;
+		width: 50% ;
     }
 
 }
